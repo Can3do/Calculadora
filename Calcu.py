@@ -21,29 +21,65 @@ def numeroPulsado(num):
 sehizo = ""
 numeroguardado = ""
 
-def sumar(primernumero):
-    global numeroguardado
 
+def guardarnumero(primernumero):
+    global numeroguardado
     numeroguardado = primernumero
     numeroPantalla.set("")
 
+
+def sumar(primernumero):
+
+    guardarnumero(primernumero)
+
     global sehizo
     sehizo = "+"
+
+def restar(primernumero):
+
+    guardarnumero(primernumero)
+
+    global sehizo
+    sehizo = "-"
+
+def multiplicar(primernumero):
+
+    guardarnumero(primernumero)
+
+    global sehizo
+    sehizo = "*"
+
+def dividir(primernumero):
+
+    guardarnumero(primernumero)
+
+    global sehizo
+    sehizo = "/"
+
+
 
 
 
 def igual():
     global numeroguardado
-
     global sehizo
+
     if sehizo == "+":
       resultado = int(numeroguardado)+int(numeroPantalla.get())
       numeroPantalla.set(resultado)
-    
+    if sehizo == "-":
+      resultado = int(numeroguardado)-int(numeroPantalla.get())
+      numeroPantalla.set(resultado)
+    if sehizo == "*":
+      resultado = int(numeroguardado)*int(numeroPantalla.get())
+      numeroPantalla.set(resultado)
+    if sehizo == "/":
+      resultado = int(numeroguardado)/int(numeroPantalla.get())
+      numeroPantalla.set(resultado)
 
 
 
-#-----------------boones-----------------
+#-----------------botones-----------------
 
 #aca se definen los botones
 button1 = Button(miFrame, text="1", width=4, command=lambda:numeroPulsado("1"))
@@ -69,9 +105,9 @@ button1.grid(row=4, column=3)
 
 #aca se definen los botones de cuentas
 buttonsumar = Button(miFrame, text="+", width=4, command=lambda:sumar(numeroPantalla.get()))
-buttonrestar = Button(miFrame, text="-", width=4, command=lambda:numeroPulsado("1"))
-buttonmultiplicar = Button(miFrame, text="*", width=4, command=lambda:numeroPulsado("1"))
-buttondividir = Button(miFrame, text="/", width=4, command=lambda:numeroPulsado("1"))
+buttonrestar = Button(miFrame, text="-", width=4, command=lambda:restar(numeroPantalla.get()))
+buttonmultiplicar = Button(miFrame, text="*", width=4, command=lambda:multiplicar(numeroPantalla.get()))
+buttondividir = Button(miFrame, text="/", width=4, command=lambda:dividir(numeroPantalla.get()))
 buttonigual = Button(miFrame, text="=", width=4, command=lambda:igual())
 
 #aca se renderizan los botones de accion
